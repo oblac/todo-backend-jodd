@@ -1,1 +1,1 @@
-todoDbSupplier.basePath=https://backend-todo.wedeploy.io/
+todoDbSupplier.basePath=http://localhost:8080/

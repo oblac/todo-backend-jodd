@@ -1,1 +1,1 @@
-web: ./gradlew run
+web: ./run.sh

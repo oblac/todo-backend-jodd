@@ -21,6 +21,16 @@ public class TodoDbSupplier implements Supplier<TodoDb> {
 		if (basePath == null) {
 			basePath = "http://localhost:8080/";
 		}
+
+		// detect Heroku
+		if (System.getenv("DYNO") != null) {
+			basePath = "https://todo-backend-jodd.herokuapp.com/";
+			System.out.println("=== HEROKU DETECTED ===");
+		}
+		else if (System.getenv("WEDEPLOY_PROJECT_ID") != null) {
+			basePath = "https://backend-todo.wedeploy.io/";
+			System.out.println("=== WEDEPLOY DETECTED ===");
+		}
 		this.todoDb = new TodoDb(basePath);
 	}
 
