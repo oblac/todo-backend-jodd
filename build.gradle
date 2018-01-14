@@ -1,0 +1,35 @@
+group 'org.jodd'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jodd:jodd-joy:4.0.0"
+    compile 'org.apache.tomcat.embed:tomcat-embed-core:8.5.24'
+    compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.24'
+}
+
+mainClassName = 'org.jodd.todo.Server'
+
+task stage(dependsOn: ['installDist'])
+
+// --- wrapper ----------------------------------------------------------------
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4.1'
+}
