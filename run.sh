@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
 ./gradlew installDist
-cd build/install/
-cd $(ls -d */|head -n 1)
+cd build/install/todo-backend-jodd
 ./bin/todo-backend-jodd
