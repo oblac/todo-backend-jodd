@@ -3,6 +3,10 @@ package org.jodd.todo;
 import jodd.madvoc.ActionRequest;
 import jodd.madvoc.filter.ActionFilter;
 
+/**
+ * Jodd Madvoc knows about filters and intercepters.
+ * We are using here an filter to set the response header.
+ */
 public class HeaderFilter implements ActionFilter {
 
 	@Override

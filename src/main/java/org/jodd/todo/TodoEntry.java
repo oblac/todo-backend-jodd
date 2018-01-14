@@ -1,5 +1,8 @@
 package org.jodd.todo;
 
+/**
+ * Simple data object.
+ */
 public class TodoEntry {
 
 	private int id;

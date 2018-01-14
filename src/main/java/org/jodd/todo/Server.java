@@ -9,6 +9,9 @@ import javax.servlet.ServletException;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Simple Tomcat embedded server.
+ */
 public class Server {
 
 	public static void main(String[] args) throws LifecycleException, ServletException, IOException {

@@ -19,6 +19,11 @@ import static jodd.madvoc.ScopeType.BODY;
 import static jodd.util.net.HttpStatus.error404;
 import static jodd.util.net.HttpStatus.ok;
 
+/**
+ * Madvoc action defines action mappings i.e. routes.
+ * For this simple example, we can define all routes here, in one class.
+ * Routes can be defined also manually, w/o the annotations.
+ */
 @MadvocAction
 @FilteredBy({DefaultWebAppFilters.class, HeaderFilter.class})
 public class TodoAction {

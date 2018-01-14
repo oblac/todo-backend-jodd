@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Nothing about Jodd here.
+ * Simple in-memory implementation of to do dabase.
+ */
 public class TodoDb {
 	private final String baseUrl;
 
