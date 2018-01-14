@@ -16,7 +16,12 @@ public class Server {
 
 		final Tomcat tomcat = new Tomcat();
 
-		tomcat.setPort(8080);
+		String port = System.getenv("PORT");
+		if (port == null || port.isEmpty()) {
+			port = "8080";
+		}
+
+		tomcat.setPort(Integer.valueOf(port));
 		tomcat.setBaseDir(FileUtil.createTempDirectory("joy", "tomcat").getAbsolutePath());
 
 		final String docBase = ".";
