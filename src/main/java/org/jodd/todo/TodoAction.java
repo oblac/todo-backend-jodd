@@ -50,7 +50,7 @@ public class TodoAction {
 		return todoDb.get().save(todoEntry);
 	}
 
-	@GET @RestAction("/{id:.+}")
+	@GET @RestAction("/{id:[0-9]+}")
 	public JsonResult item(@In int id) {
 		TodoEntry todoEntry = todoDb.get().find(id);
 
