@@ -14,6 +14,7 @@ public class TodoAppContextListener extends JoyContextListener {
 	@Override
 	protected JoddJoy createJoy() {
 		return JoddJoy.get()
+			.withScanner(joyScanner -> joyScanner.scanClasspathOf(this))    // required for java9
 			.withDb(JoyDb::disableDatabase);
 	}
 }

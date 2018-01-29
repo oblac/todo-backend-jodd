@@ -15,7 +15,8 @@ import java.io.IOException;
 public class Server {
 
 	public static void main(String[] args) throws LifecycleException, ServletException, IOException {
-		printOutEnviroments();
+		printOutEnvirnoment();
+
 		System.setProperty("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE", "true");
 
 		final Tomcat tomcat = new Tomcat();
@@ -38,7 +39,7 @@ public class Server {
 		tomcat.getServer().await();
 	}
 
-	private static void printOutEnviroments() {
+	private static void printOutEnvirnoment() {
 		System.getenv().forEach((key, value) -> System.out.println(key + "=" + value));
 	}
 }
