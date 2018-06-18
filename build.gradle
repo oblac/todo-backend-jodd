@@ -1,10 +1,9 @@
 group 'org.jodd'
-version '1.0-SNAPSHOT'
+version '2.0'
 
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
     }
 }
 
@@ -19,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.jodd:jodd-joy:4.1.1"
+    compile 'org.jodd:jodd-joy:5.0.0'
     compile 'org.apache.tomcat.embed:tomcat-embed-core:8.5.24'
     compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.24'
 }
@@ -32,5 +31,5 @@ task stage(dependsOn: ['installDist'])
 // --- wrapper ----------------------------------------------------------------
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.4.1'
+    gradleVersion = '4.5'
 }

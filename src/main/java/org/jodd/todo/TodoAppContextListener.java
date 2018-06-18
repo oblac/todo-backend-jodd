@@ -1,8 +1,6 @@
 package org.jodd.todo;
 
-import jodd.joy.JoddJoy;
 import jodd.joy.JoyContextListener;
-import jodd.joy.JoyDb;
 
 /**
  * This class actually starts the Jodd web application.
@@ -11,10 +9,4 @@ import jodd.joy.JoyDb;
  * but we wanted to show all this as an example.
  */
 public class TodoAppContextListener extends JoyContextListener {
-	@Override
-	protected JoddJoy createJoy() {
-		return JoddJoy.get()
-			.withScanner(joyScanner -> joyScanner.scanClasspathOf(this))    // required for java9
-			.withDb(JoyDb::disableDatabase);
-	}
 }

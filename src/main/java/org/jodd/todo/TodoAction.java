@@ -1,23 +1,21 @@
 package org.jodd.todo;
 
-import jodd.madvoc.filter.DefaultWebAppFilters;
-import jodd.madvoc.meta.DELETE;
 import jodd.madvoc.meta.FilteredBy;
-import jodd.madvoc.meta.GET;
 import jodd.madvoc.meta.In;
 import jodd.madvoc.meta.MadvocAction;
-import jodd.madvoc.meta.PATCH;
-import jodd.madvoc.meta.POST;
 import jodd.madvoc.meta.RestAction;
-import jodd.madvoc.meta.Scope;
+import jodd.madvoc.meta.method.DELETE;
+import jodd.madvoc.meta.method.GET;
+import jodd.madvoc.meta.method.PATCH;
+import jodd.madvoc.meta.method.POST;
+import jodd.madvoc.meta.scope.JsonBody;
 import jodd.madvoc.result.JsonResult;
 import jodd.petite.meta.PetiteInject;
 
 import java.util.ArrayList;
 
-import static jodd.madvoc.ScopeType.BODY;
-import static jodd.util.net.HttpStatus.error404;
-import static jodd.util.net.HttpStatus.ok;
+import static jodd.net.HttpStatus.error404;
+import static jodd.net.HttpStatus.ok;
 
 /**
  * Madvoc action defines action mappings i.e. routes.
@@ -25,7 +23,7 @@ import static jodd.util.net.HttpStatus.ok;
  * Routes can be defined also manually, w/o the annotations.
  */
 @MadvocAction
-@FilteredBy({DefaultWebAppFilters.class, HeaderFilter.class})
+@FilteredBy({HeaderFilter.class})
 public class TodoAction {
 
 	@PetiteInject
@@ -51,11 +49,12 @@ public class TodoAction {
 
 	@POST
 	@RestAction("/")
-	public TodoEntry newEntry(@In @Scope(BODY) TodoEntry todoEntry) {
+	public TodoEntry newEntry(@In @JsonBody TodoEntry todoEntry) {
 		return todoDb.get().save(todoEntry);
 	}
 
-	@GET @RestAction("/{id:[0-9]+}")
+	@GET
+	@RestAction("/{id:[0-9]+}")
 	public JsonResult item(@In int id) {
 		TodoEntry todoEntry = todoDb.get().find(id);
 
@@ -65,7 +64,8 @@ public class TodoAction {
 		return JsonResult.of(todoEntry);
 	}
 
-	@DELETE @RestAction("/{id:.+}")
+	@DELETE
+	@RestAction("/{id:.+}")
 	public JsonResult deleteItem(@In int id) {
 		TodoEntry todoEntry = todoDb.get().delete(id);
 
@@ -75,8 +75,9 @@ public class TodoAction {
 		return JsonResult.of(todoEntry);
 	}
 
-	@PATCH @RestAction("/{id}")
-	public TodoEntry update(@In int id, @In @Scope(BODY) TodoEntry todoEntryPatch) {
+	@PATCH
+	@RestAction("/{id}")
+	public TodoEntry update(@In int id, @In @JsonBody TodoEntry todoEntryPatch) {
 		return todoDb.get().patch(id, todoEntryPatch);
 	}
 }
